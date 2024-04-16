@@ -2,10 +2,20 @@ import Decription from "./Description/Decription";
 import FeedBack from "./FeedBack/FeedBack";
 import Options from "./Options/Options";
 import Notification from "./Notification/Notification";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [clicks, setClicks] = useState({ good: 0, neutral: 0, bad: 0 });
+  const [clicks, setClicks] = useState(() => {
+    const savedFeedback = window.localStorage.getItem("feedback");
+    console.log(savedFeedback);
+    if (savedFeedback !== null) {
+      return JSON.parse(savedFeedback);
+    }
+    return { good: 0, neutral: 0, bad: 0 };
+  });
+  useEffect(() => {
+    window.localStorage.setItem("feedback", JSON.stringify(clicks));
+  }, [clicks]);
 
   const updateFeedback = (feedbackType) => {
     if (feedbackType === "good") {
@@ -23,7 +33,7 @@ function App() {
   const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
 
   const resetFeedback = () => {
-    return setClicks({ ...clicks, good: 0, neutral: 0, bad: 0 });
+    return setClicks({ good: 0, neutral: 0, bad: 0 });
   };
 
   return (

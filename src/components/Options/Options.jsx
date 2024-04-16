@@ -3,7 +3,6 @@ const Options = ({ children, updateFeedback, resetFeedback }) => {
     <button
       onClick={() => {
         if (updateFeedback) {
-          console.log(updateFeedback);
           return updateFeedback(`${children.toLowerCase()}`);
         }
         if (resetFeedback) {
