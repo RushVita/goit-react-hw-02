@@ -1,7 +1,9 @@
-import Decription from "./Description/Decription";
-import FeedBack from "./FeedBack/FeedBack";
-import Options from "./Options/Options";
-import Notification from "./Notification/Notification";
+import Decription from "../Description/Decription";
+import FeedBack from "../FeedBack/FeedBack";
+import Options from "../Options/Options";
+import Notification from "../Notification/Notification";
+import "normalize.css";
+import css from "./App.module.css";
 import { useState, useEffect } from "react";
 
 function App() {
@@ -37,21 +39,24 @@ function App() {
   };
 
   return (
-    <div>
+    <div className={css.container}>
       <h1>Sip Happens Café</h1>
       <Decription />
-      <Options updateFeedback={updateFeedback}>Good</Options>
-      <Options updateFeedback={updateFeedback}>Neutral</Options>
-      <Options updateFeedback={updateFeedback}>Bad</Options>
-      {totalFeedback !== 0 && (
-        <button
-          onClick={() => {
-            resetFeedback();
-          }}
-        >
-          Reset
-        </button>
-      )}
+      <div>
+        <Options updateFeedback={updateFeedback}>Good</Options>
+        <Options updateFeedback={updateFeedback}>Neutral</Options>
+        <Options updateFeedback={updateFeedback}>Bad</Options>
+        {totalFeedback !== 0 && (
+          <button
+            className={css.btn}
+            onClick={() => {
+              resetFeedback();
+            }}
+          >
+            Reset
+          </button>
+        )}
+      </div>
       {totalFeedback !== 0 ? (
         <FeedBack
           clicks={clicks}
