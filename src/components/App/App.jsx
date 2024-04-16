@@ -1,5 +1,5 @@
 import Description from "../Description/Description";
-import Feedback1 from "../Feedback1/Feedback1"
+import Feedback from "../Feedback/Feedback"
 import Options from "../Options/Options";
 import Notification from "../Notification/Notification";
 import "normalize.css";
@@ -54,7 +54,7 @@ function App() {
         )}
       </div>
       {totalFeedback > 0 ? (
-        <Feedback1 clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback}/>
+        <Feedback clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback}/>
       ) : (
         <Notification message="No feedback yet" />
       )}
