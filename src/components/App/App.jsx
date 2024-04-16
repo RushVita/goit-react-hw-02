@@ -1,7 +1,7 @@
 import Description from "../Description/Description";
-import Feedback from "../Feedback/Feedback";
+// import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
-import Notification from "../Notification/Notification";
+// import Notification from "../Notification/Notification";
 import "normalize.css";
 import css from "./App.module.css";
 import { useState, useEffect } from "react";
@@ -35,7 +35,7 @@ function App() {
     return;
   };
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
-  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
+  // const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
 
   const resetFeedback = () => {
     return setClicks({ good: 0, neutral: 0, bad: 0 });
@@ -53,11 +53,11 @@ function App() {
           </button>
         )}
       </div>
-      {totalFeedback > 0 ? (
+      {/* {totalFeedback > 0 ? (
         <Feedback clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback} />
       ) : (
         <Notification message="No feedback yet" />
-      )}
+      )} */}
     </div>
   );
 }
