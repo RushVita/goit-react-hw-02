@@ -1,5 +1,5 @@
-import Decription from "../Description/Decription";
-import FeedBack from "../FeedBack/FeedBack";
+import Description from "../Description/Description";
+import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
 import Notification from "../Notification/Notification";
 import "normalize.css";
@@ -9,7 +9,7 @@ import { useState, useEffect } from "react";
 function App() {
   const [clicks, setClicks] = useState(() => {
     const savedFeedback = window.localStorage.getItem("feedback");
-    console.log(savedFeedback);
+
     if (savedFeedback !== null) {
       return JSON.parse(savedFeedback);
     }
@@ -19,7 +19,10 @@ function App() {
     window.localStorage.setItem("feedback", JSON.stringify(clicks));
   }, [clicks]);
 
+  const keysBtn = Object.keys(clicks);
+
   const updateFeedback = (feedbackType) => {
+    console.log(feedbackType);
     if (feedbackType === "good") {
       return setClicks({ ...clicks, good: clicks.good + 1 });
     }
@@ -40,31 +43,20 @@ function App() {
 
   return (
     <div className={css.container}>
-      <h1>Sip Happens Café</h1>
-      <Decription />
-      <div>
-        <Options updateFeedback={updateFeedback}>Good</Options>
-        <Options updateFeedback={updateFeedback}>Neutral</Options>
-        <Options updateFeedback={updateFeedback}>Bad</Options>
+      <Description />
+      <div className={css.wraperBtn}>
+        <Options btn={keysBtn} updateFeedback={updateFeedback}></Options>
+
         {totalFeedback !== 0 && (
-          <button
-            className={css.btn}
-            onClick={() => {
-              resetFeedback();
-            }}
-          >
+          <button className={css.btn} onClick={resetFeedback}>
             Reset
           </button>
         )}
       </div>
-      {totalFeedback !== 0 ? (
-        <FeedBack
-          clicks={clicks}
-          total={totalFeedback}
-          positiveFeedback={positiveFeedback}
-        />
+      {totalFeedback > 0 ? (
+        <Feedback clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback} />
       ) : (
-        <Notification />
+        <Notification message="No feedback yet" />
       )}
     </div>
   );

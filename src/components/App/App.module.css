@@ -11,18 +11,23 @@ li {
   margin-right: auto;
 
   display: flex;
-  align-items: center;
-  justify-content: center;
+
   flex-direction: column;
   gap: 24px;
 
-  outline: 1px solid red;
-}
-
-.btn {
-  margin: 5px;
-  background-color: rgb(43, 226, 195);
-  border:  1px solid rgb(57, 152, 121);
-  border-radius:  45%;
-  }
   
+}
+.wraperBtn {
+  width: 100%;
+  
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+}
+.btn {
+  background-color: rgb(43, 226, 195);
+  border: 1px solid rgb(57, 152, 121);
+  border-radius: 45%;
+}

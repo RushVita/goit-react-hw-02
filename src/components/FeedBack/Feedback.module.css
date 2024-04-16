@@ -1,6 +1,7 @@
 .wrap {
   display: flex;
-  gap: 8px;
+  gap: 22px;
+  justify-content: start;
 }
 
 .list {

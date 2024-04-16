@@ -1,20 +1,24 @@
 import css from "./Options.module.css";
 
-const Options = ({ children, updateFeedback, resetFeedback }) => {
+const Options = ({ btn, updateFeedback }) => {
+  
   return (
-    <button
-      className={css.btn}
-      onClick={() => {
-        if (updateFeedback) {
-          return updateFeedback(`${children.toLowerCase()}`);
-        }
-        if (resetFeedback) {
-          return resetFeedback;
-        }
-      }}
-    >
-      {children}
-    </button>
+    <>
+      {btn.map((item, index) => {
+        
+        return (
+          <button
+            className={css.btn}
+            key={index}
+            onClick={() => {
+              updateFeedback(item);
+            }}
+          >
+            {item}
+          </button>
+        );
+      })}
+    </>
   );
 };
 

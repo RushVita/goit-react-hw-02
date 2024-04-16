@@ -1,4 +1,4 @@
-import css from "../FeedBack/Feedback.module.css"
+import css from "./Feedback.module.css"
 
 const FeedBack = ({
   clicks: { good, neutral, bad },
