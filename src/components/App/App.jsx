@@ -1,7 +1,7 @@
-import Description from "../Description/Description.jsx"
-import Options from "../Options/Options.jsx"
-import Feedback from "../Feedback/Feedback.jsx"
-import Notification from "../Notification/Notification.jsx"
+import Description from "../Description/Description";
+import Feedback from "../Feedback/Feedback";
+import Options from "../Options/Options";
+import Notification from "../Notification/Notification";
 import "normalize.css";
 import css from "./App.module.css";
 import { useState, useEffect } from "react";
