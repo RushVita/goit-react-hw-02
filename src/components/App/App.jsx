@@ -1,7 +1,7 @@
 import Description from "../Description/Description";
 // import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
-// import Notification from "../Notification/Notification";
+import Notification from "../Notification/Notification";
 import "normalize.css";
 import css from "./App.module.css";
 import { useState, useEffect } from "react";
@@ -56,8 +56,9 @@ function App() {
       {/* {totalFeedback > 0 ? (
         <Feedback clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback} />
       ) : (
-        <Notification message="No feedback yet" />
+        
       )} */}
+      <Notification message="No feedback yet" />
     </div>
   );
 }
