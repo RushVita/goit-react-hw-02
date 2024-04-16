@@ -1,10 +1,6 @@
-import css from "./Feedback.module.css"
+import css from "./Feedback.module.css";
 
-const FeedBack = ({
-  clicks: { good, neutral, bad },
-  total,
-  positiveFeedback,
-}) => {
+const Feedback = ({ clicks: { good, neutral, bad }, total, positiveFeedback }) => {
   return (
     <ul className={css.wrap}>
       <li className={css.list}>Good: {good}</li>
@@ -16,4 +12,4 @@ const FeedBack = ({
   );
 };
 
-export default FeedBack;
+export default Feedback;
