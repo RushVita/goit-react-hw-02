@@ -1,4 +1,4 @@
-import css from "./Feedback.module.css";
+import css from "./Response.module.css";
 
 const Feedback = ({ clicks: { good, neutral, bad }, total, positiveFeedback }) => {
   return (
