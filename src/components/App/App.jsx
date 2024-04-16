@@ -1,5 +1,5 @@
 import Description from "../Description/Description";
-import Feedback from "../Feedback/Feedback";
+import Feedback1 from "../Feedback1/Feedback1"
 import Options from "../Options/Options";
 import Notification from "../Notification/Notification";
 import "normalize.css";
@@ -35,7 +35,7 @@ function App() {
     return;
   };
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
-  // const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
+  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
 
   const resetFeedback = () => {
     return setClicks({ good: 0, neutral: 0, bad: 0 });
@@ -53,10 +53,12 @@ function App() {
           </button>
         )}
       </div>
-     
-        <Feedback clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback} />
+      {totalFeedback > 0 ? (
+        <Feedback1 clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback}/>
+      ) : (
+        <Notification message="No feedback yet" />
+      )}
       
-      <Notification message="No feedback yet" />
     </div>
   );
 }
