@@ -1,10 +1,10 @@
+import { useState, useEffect } from "react";
 import Description from "../Description/Description";
-import Response from "../Response/Response"
+import Feedback from "../Feedback/Feedback";
 import Options from "../Options/Options";
 import Notification from "../Notification/Notification";
 import "normalize.css";
 import css from "./App.module.css";
-import { useState, useEffect } from "react";
 
 function App() {
   const [clicks, setClicks] = useState(() => {
@@ -45,20 +45,18 @@ function App() {
     <div className={css.container}>
       <Description />
       <div className={css.wraperBtn}>
-        <Options btn={keysBtn} updateFeedback={updateFeedback}></Options>
-
-        {totalFeedback !== 0 && (
-          <button className={css.btn} onClick={resetFeedback}>
-            Reset
-          </button>
-        )}
+        <Options
+          btn={keysBtn}
+          onUpdateFeedback={updateFeedback}
+          totalFeedback={totalFeedback}
+          onReset={resetFeedback}
+        />
       </div>
       {totalFeedback > 0 ? (
-        <Response clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback}/>
+        <Feedback clicks={clicks} total={totalFeedback} positiveFeedback={positiveFeedback} />
       ) : (
         <Notification message="No feedback yet" />
       )}
-      
     </div>
   );
 }
