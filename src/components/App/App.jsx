@@ -22,17 +22,9 @@ function App() {
   const keysBtn = Object.keys(clicks);
 
   const updateFeedback = (feedbackType) => {
-    console.log(feedbackType);
-    if (feedbackType === "good") {
-      return setClicks({ ...clicks, good: clicks.good + 1 });
-    }
-    if (feedbackType === "neutral") {
-      return setClicks({ ...clicks, neutral: clicks.neutral + 1 });
-    }
-    if (feedbackType === "bad") {
-      return setClicks({ ...clicks, bad: clicks.bad + 1 });
-    }
-    return;
+    return setClicks((prevFeedback) => {
+      return { ...clicks, [feedbackType]: prevFeedback[feedbackType] + 1 };
+    });
   };
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
   const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
