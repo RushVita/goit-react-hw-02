@@ -23,11 +23,11 @@ function App() {
 
   const updateFeedback = (feedbackType) => {
     return setClicks((prevFeedback) => {
-      return { ...clicks, [feedbackType]: prevFeedback[feedbackType] + 1 };
+      return { ...prevFeedback, [feedbackType]: prevFeedback[feedbackType] + 1 };
     });
   };
   const totalFeedback = clicks.good + clicks.neutral + clicks.bad;
-  const positiveFeedback = Math.round((clicks.good / totalFeedback) * 100);
+  const positiveFeedback = totalFeedback > 0 ? Math.round((clicks.good / totalFeedback) * 100) : 0;
 
   const resetFeedback = () => {
     return setClicks({ good: 0, neutral: 0, bad: 0 });
